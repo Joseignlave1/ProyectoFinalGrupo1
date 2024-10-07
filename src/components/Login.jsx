@@ -26,6 +26,7 @@ const Login = () => {
 
       const request =  await fetch("http://localhost:3001/api/auth/login", {
         method: "POST",
+        headers:{"Content-Type":"application/json"},
         body: JSON.stringify(user),
       });
     console.log({request});
@@ -41,6 +42,7 @@ const Login = () => {
 
         const request2 =  await fetch("http://localhost:3001/api/auth/register", {
           method: "POST",
+          headers:{"Content-Type":"application/json"},
           body: JSON.stringify(newUser),
         });
 
@@ -114,11 +116,11 @@ const Login = () => {
         <p className="signup-text">
           {isLogin ? (
             <>
-              Create account <a href="#signup" onClick={() => setIsLogin(false)}>here</a>
+              Create account <a href="signup" onClick={() => setIsLogin(false)}>here</a>
             </>
           ) : (
             <>
-              Already have an account? <a href="#login" onClick={() => setIsLogin(true)}>Login</a>
+              Already have an account? <a href="login" onClick={() => setIsLogin(true)}>Login</a>
             </>
           )}
         </p>
