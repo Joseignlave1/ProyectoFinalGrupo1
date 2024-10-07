@@ -4,12 +4,10 @@ import './Myprofile.css';
 const MyProfile = () => {
     return (
         <div className="profile">
-            <header className="profile-header">
+            <header className="myprofile">
                 <h1>UnUsername</h1>
                 <img 
-                    src="path-to-your-profile-pic.jpg" 
-                    alt="Profile" 
-                    className="profile-pic" 
+        
                 />
                 <p className="username">Username</p>
                 <p className="description">My profile description</p>

@@ -85,7 +85,7 @@
       text-decoration: underline;
     }
 
-    /* Responsividad */
+
     @media (max-width: 768px) {
       .login-container {
         width: 90%;
