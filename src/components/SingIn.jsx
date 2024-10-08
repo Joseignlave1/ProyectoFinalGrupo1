@@ -6,25 +6,28 @@ import "./Login.css";
 import { useState } from 'react';
 import logo from './Logo.png';
 
-const Login = () => {
+const SignIn = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = {
+    const newUser = {
+      username: username,
       email: email,
       password: password,
     };
 
-    const request = await fetch("http://localhost:3001/api/auth/login", {
+    const request2 = await fetch("http://localhost:3001/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
     });
 
-    console.log({ request });
+    console.log({ request2 });
+    localStorage.setItem('newUser', JSON.stringify(newUser));
   };
 
   return (
@@ -36,6 +39,14 @@ const Login = () => {
         </div>
         <h1 className="title">fakestagram</h1>
         <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="username"
+            className="input-field"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
           <input
             type="email"
             placeholder="email"
@@ -52,14 +63,14 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">Create Account</button>
         </form>
         <p className="signup-text">
-          Create account <a href="signup" onClick={() => window.location.href = '/signup'}>here</a>
+          Already have an account? <a href="login" onClick={() => window.location.href = '/login'}>Login</a>
         </p>
       </Container>
     </React.Fragment>
   );
 };
 
-export default Login;
+export default SignIn;
