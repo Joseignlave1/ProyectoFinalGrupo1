@@ -66,7 +66,7 @@ const SignIn = () => {
           <button type="submit" className="login-button">Create Account</button>
         </form>
         <p className="signup-text">
-          Already have an account? <a href="login" onClick={() => window.location.href = '/login'}>Login</a>
+          Already have an account? <a href="/" onClick={() => window.location.href = '/login'}>Login</a>
         </p>
       </Container>
     </React.Fragment>

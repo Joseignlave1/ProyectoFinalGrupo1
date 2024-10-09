@@ -55,8 +55,9 @@ const Login = () => {
           <button type="submit" className="login-button">Login</button>
         </form>
         <p className="signup-text">
-          Create account <a href="signup" onClick={() => window.location.href = '/signup'}>here</a>
+          Create account <a href="/register">here</a>
         </p>
+
       </Container>
     </React.Fragment>
   );
