@@ -1,9 +1,9 @@
-    *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    
+
     body {
       font-family: 'Arial', sans-serif;
       display: flex;
@@ -13,7 +13,7 @@
       background-color: #fff;
       margin: 0;
     }
-    
+
     .login-container {
       text-align: center;
       width: 320px;
@@ -23,7 +23,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: width 0.3s ease;
     }
-    
+
     .logo img {
       width: 80px;
       height: 80px;
@@ -31,7 +31,7 @@
       background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
       margin-bottom: 20px;
     }
-    
+
     .title {
       font-size: 36px;
       font-weight: bold;
@@ -40,12 +40,12 @@
       color: transparent;
       margin-bottom: 30px;
     }
-    
+
     .login-form {
       display: flex;
       flex-direction: column;
     }
-    
+
     .input-field {
       width: 100%;
       padding: 10px;
@@ -54,7 +54,7 @@
       border-radius: 5px;
       background-color: #e0e0e0;
     }
-    
+
     .login-button {
       width: 100%;
       padding: 10px;
@@ -66,60 +66,60 @@
       cursor: pointer;
       margin: 10px 0;
     }
-    
+
     .login-button:hover {
       background-color: #a865c9;
     }
-    
+
     .signup-text {
       margin-top: 20px;
     }
-    
+
     .signup-text a {
       color: #000;
       text-decoration: none;
       font-weight: bold;
     }
-    
+
     .signup-text a:hover {
       text-decoration: underline;
     }
-    
-    /* Responsividad */
+
+
     @media (max-width: 768px) {
       .login-container {
         width: 90%;
         padding: 15px;
       }
-    
+
       .title {
         font-size: 28px;
       }
-    
+
       .input-field {
         padding: 8px;
       }
-    
+
       .login-button {
         font-size: 14px;
         padding: 8px;
       }
     }
-    
+
     @media (max-width: 480px) {
       .login-container {
         width: 100%;
         padding: 10px;
       }
-    
+
       .title {
         font-size: 24px;
       }
-    
+
       .input-field {
         padding: 6px;
       }
-    
+
       .login-button {
         font-size: 12px;
         padding: 6px;
