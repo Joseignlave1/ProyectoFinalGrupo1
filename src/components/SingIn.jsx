@@ -5,11 +5,15 @@ import Container from '@mui/material/Container';
 import "./Login.css";
 import { useState } from 'react';
 import logo from './Logo.png';
+import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
+const SignIn = ({ onRegister }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,14 +24,27 @@ const SignIn = () => {
       password: password,
     };
 
-    const request2 = await fetch("http://localhost:3001/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser),
-    });
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser),
+      });
 
-    console.log({ request2 });
-    localStorage.setItem('newUser', JSON.stringify(newUser));
+      const data = await response.json();
+      if (response.ok) {
+        // Guardar el usuario en localStorage o usar un token si es necesario
+        localStorage.setItem('newUser', JSON.stringify(newUser));
+        // Llamar a la función onRegister para cambiar el estado de autenticación
+        onRegister();
+        // Redirigir al usuario al Feed o MyProfile
+        navigate('/feed');
+      } else {
+        setErrorMessage(data.message || "Registration failed");
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred during registration");
+    }
   };
 
   return (
@@ -65,8 +82,11 @@ const SignIn = () => {
           />
           <button type="submit" className="login-button">Create Account</button>
         </form>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
         <p className="signup-text">
-          Already have an account? <a href="/" onClick={() => window.location.href = '/login'}>Login</a>
+          Already have an account? <a href="/login">Login</a>
         </p>
       </Container>
     </React.Fragment>
