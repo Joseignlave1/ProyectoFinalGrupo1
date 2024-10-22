@@ -1,22 +1,19 @@
 import './App.css';
-import LoginView from './Views/LoginView';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MyProfile from './components/Myprofile';
-import SignIn from './components/SingIn';
-import Feed from './components/Feed';
-
+import Login from "./Views/Login/Login";
+import Register from "./Views/Register/Register";
+import Feed from './Views/Feed/Feed';
+import Profile from './Views/Profile/Profile';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginView />} />
-          <Route path="/register" element={<SignIn/>} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed />} />
-
-          <Route path="/Myprofile" element={<MyProfile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,4 @@
-
-import React from 'react';
-import './Feed.css';
+import "./feed.css";
 
 const Feed = () => {
   return (
@@ -36,15 +34,21 @@ const Feed = () => {
         </div>
 
         <div className="post-details">
-          <p className="likes"><strong>33 Likes</strong></p>
+          <p className="likes">
+            <strong>33 Likes</strong>
+          </p>
           <p className="post-description">
             <strong>FriendName</strong> this is my friend’s post description...
             <span className="see-more">plus</span>
           </p>
           <p className="view-comments">Voir les 3 commentaires</p>
           <div className="comments">
-            <p><strong>PersonName</strong> A comment post</p>
-            <p className="response"><strong>Friend Name</strong> a response</p>
+            <p>
+              <strong>PersonName</strong> A comment post
+            </p>
+            <p className="response">
+              <strong>Friend Name</strong> a response
+            </p>
           </div>
           <p className="time">2 hs</p>
         </div>
