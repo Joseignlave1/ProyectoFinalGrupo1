@@ -1,16 +1,18 @@
-// Login.js
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import "./Login.css";
-import { useState } from 'react';
-import logo from './Logo.png';
+import { useState } from "react";
+import logo from "./Logo.png";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate
 
 const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate(); // Definir navigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,15 +24,19 @@ const Login = ({ onLogin }) => {
 
     try {
       const response = await fetch("http://localhost:3001/api/auth/login", {
-        method: "GET",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
 
       const data = await response.json();
       if (response.ok) {
-        // Llama a la función onLogin desde App para autenticar al usuario
+        // Guardar el usuario en localStorage o usar un token si es necesario
+        localStorage.setItem("newUser", JSON.stringify(user));
+        // Llamar a la función onLogin para cambiar el estado de autenticación
         onLogin();
+        // Redirigir al usuario al Feed o MyProfile
+        navigate("/feed"); // Redirigir al feed
       } else {
         setErrorMessage(data.message || "Login failed");
       }
@@ -64,7 +70,9 @@ const Login = ({ onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </form>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
