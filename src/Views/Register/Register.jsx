@@ -4,14 +4,25 @@ import Container from "@mui/material/Container";
 import { postSingin } from "../../Services/api";
 import "./register.css";
 import logo from "../../Images/Logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (username, email, password) => {
-    postSingin(username, email, password);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await postSingin(username, email, password);
+      localStorage.setItem("jwt-token", data.token);
+      
+      navigate("/");
+      return data;
+    } catch (error) {
+      
+    }
   };
 
   return (
