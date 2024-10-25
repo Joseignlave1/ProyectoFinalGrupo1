@@ -23,7 +23,7 @@ const Profile = () => {
   const [photo, setPhoto] = useState("");
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("jwt-token"); // Obtener el token de autenticación desde el almacenamiento local
   
   useEffect(() => {
     const fetchUserProfile = async () => {
