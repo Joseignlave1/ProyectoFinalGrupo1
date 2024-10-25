@@ -22,11 +22,17 @@ const Profile = () => {
   const [descripcion, setDescripcion] = useState("");
   const [photo, setPhoto] = useState("");
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
   
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/user/profile/${id}`);
+        const response = await fetch(`http://localhost:3001/api/user/profile/${id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setUserData(data.user);
@@ -58,6 +64,7 @@ const Profile = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           userName: userName,
