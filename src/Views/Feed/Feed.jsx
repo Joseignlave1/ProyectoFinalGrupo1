@@ -1,22 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import "./feed.css";
 
 const Feed = () => {
   const navigate = useNavigate();
-
+  const id = localStorage.getItem('user-id');
   const handleLogout = () => {
     localStorage.removeItem('jwt-token');
     navigate("/");
   }
   return (
     <div className="feed">
-      <button onClick={ handleLogout}>Cerrar Sesion</button>
+      <button onClick={handleLogout}>Cerrar Sesion</button>
       <header className="feed-header">
         <h1>Fakestagram</h1>
         <div className="feed-actions">
           <i className="fas fa-heart"></i>
           <i className="fas fa-plus"></i>
         </div>
+        <button onClick={() => {navigate(`/user/profile/${id}`)}}>
+          GO TO MY PROFILE
+        </button>
       </header>
 
       <div className="post">

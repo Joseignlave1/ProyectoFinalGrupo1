@@ -18,6 +18,7 @@ const Login = () => {
       const data = await postLogin(email, password);
       //Guardamos token JWT en local Storage
       localStorage.setItem('jwt-token', data.token);
+      localStorage.setItem('user-id', data._id);
       navigate("/feed");
     } catch (error) {
       setErrorMessage("Credenciales Incorrectas, Intente nuevamente");
