@@ -1,8 +1,12 @@
 .feed {
   background-color: #fff;
-  max-width: 600px;
+  max-width: 900px; 
+  width: 100%; 
   margin: 0 auto;
   border: 1px solid #ddd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .feed-header {
@@ -21,6 +25,11 @@
 .feed-actions i {
   margin-left: 15px;
   font-size: 20px;
+}
+
+.posts {
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .post {
@@ -107,15 +116,41 @@
   padding: 15px;
   border-top: 1px solid #ddd;
 }
+.footer-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
 
-.footer-profile-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
+.footer-button i {
+  font-size: 24px;
+  color: #000; /* Color del ícono */
+}
+
+.footer-button:focus {
+  outline: none;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1200px) {
+  .feed {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed {
+    max-width: 700px;
+  }
 }
 
 @media (max-width: 768px) {
+  .feed {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
   .feed-header h1 {
     font-size: 20px;
   }
