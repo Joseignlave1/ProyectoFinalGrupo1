@@ -23,7 +23,7 @@ const Profile = () => {
   const [photo, setPhoto] = useState("");
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("jwt-token"); // Obtener el token de autenticación desde el almacenamiento local
+  const token = localStorage.getItem("token"); // Obtener el token de autenticación desde el almacenamiento local
   
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -42,7 +42,7 @@ const Profile = () => {
           setPostCount(data.posts.length);
           setUserName(data.user.username);
           setDescripcion(data.user.description);
-          setPhoto(data.user.profileImage);
+          setPhoto(data.user.profilePicture);
         }
       } catch (error) {
         console.error("Error al obtener el perfil del usuario:", error);
@@ -75,9 +75,6 @@ const Profile = () => {
       if (response.ok) {
         const DataUser = await response.json();
         setUserData(DataUser.user);
-        // setUserName(DataUser.nombreUsuario);
-        // setDescripcion(DataUser.descripcion);
-        // setPhoto(DataUser.fotoPerfil);
         setModoEdicion(false);
       } else {
         console.error("Error al actualizar el perfil");
@@ -109,8 +106,6 @@ const Profile = () => {
             </div>
             <div className="profile-info">
               <h1 className="nombreUsuario">{userName}</h1>
-              <p className="descripcion">{descripcion}</p>
-              <p>{userData?.createdAt}</p>
               <div className="profile-stats">
                 <div>
                   <h5>Posts</h5>
@@ -139,7 +134,7 @@ const Profile = () => {
               <p>No hay publicaciones</p>
             )}
           </div>
-          {postDescription && (
+          {/* {postDescription && (
             <Modal onClose={handleCloseModal}>
               <div className="modal-post">
                 <UserPost
@@ -156,7 +151,7 @@ const Profile = () => {
                 />
               </div>
             </Modal>
-          )}
+          )} */}
           {modoEdicion && (
             <>
               <div className="modal-overlay" onClick={alternarEdicion}></div>
