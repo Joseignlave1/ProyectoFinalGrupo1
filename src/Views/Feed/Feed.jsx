@@ -84,11 +84,11 @@ useEffect(() => {
 
       <footer className="feed-footer">
         <button onClick={handleNavigateToFeed} className="footer-button">
-          <i className="fas fa-home"></i>
+          <i className="butonFeed"></i>
           <span>Home</span>
         </button>
         <button onClick={() => navigate("/profile")} className="footer-button">
-          <i className="fas fa-user"></i>
+          <i className="butonPerfil"></i>
           <span>Profile</span>
         </button>
       </footer>
