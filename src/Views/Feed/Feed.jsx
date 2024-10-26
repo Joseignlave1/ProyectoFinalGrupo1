@@ -1,16 +1,52 @@
 import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./feed.css";
+import PostCard from "../../Components/Card/PostCard";
+import { getFeed, likePost } from "../../Services/postServices";
 
 const Feed = () => {
   const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
 
   const handleLogout = () => {
-    localStorage.removeItem('jwt-token');
+    localStorage.removeItem("jwt-token");
     navigate("/");
-  }
+  };
+
+  const handleNavigateToFeed = () => {
+    navigate("/feed");
+  };
+
+  const handleLikePost = async (postId) => {
+    try {
+      const updatedPost = await likePost(postId);
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post.id === updatedPost.id ? updatedPost : post
+        )
+      );
+    } catch (error) {
+      console.error("Error al dar like:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getFeed();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error al obtener el feed:", error);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <div className="feed">
-      <button onClick={ handleLogout}>Cerrar Sesion</button>
+      <button className="cerrarSesion" onClick={handleLogout}>
+        Cerrar Sesión
+      </button>
       <header className="feed-header">
         <h1>Fakestagram</h1>
         <div className="feed-actions">
@@ -19,56 +55,25 @@ const Feed = () => {
         </div>
       </header>
 
-      <div className="post">
-        <div className="post-header">
-          <img
-            src="https://via.placeholder.com/50"
-            alt="Profile"
-            className="profile-pic"
+      <div className="posts">
+        {posts.map((post) => (
+          <PostCard
+            key={post.id}
+            post={post}
+            onLike={() => handleLikePost(post.id)}
           />
-          <p className="post-username">FriendName</p>
-          <i className="fas fa-ellipsis-h"></i>
-        </div>
-
-        <img
-          src="https://via.placeholder.com/500x300"
-          alt="Post content"
-          className="post-img"
-        />
-
-        <div className="post-actions">
-          <i className="far fa-heart"></i>
-          <i className="far fa-comment"></i>
-        </div>
-
-        <div className="post-details">
-          <p className="likes">
-            <strong>33 Likes</strong>
-          </p>
-          <p className="post-description">
-            <strong>FriendName</strong> this is my friend’s post description...
-            <span className="see-more">plus</span>
-          </p>
-          <p className="view-comments">Voir les 3 commentaires</p>
-          <div className="comments">
-            <p>
-              <strong>PersonName</strong> A comment post
-            </p>
-            <p className="response">
-              <strong>Friend Name</strong> a response
-            </p>
-          </div>
-          <p className="time">2 hs</p>
-        </div>
+        ))}
       </div>
 
       <footer className="feed-footer">
-        <i className="fas fa-home"></i>
-        <img
-          src="https://via.placeholder.com/30"
-          alt="User profile"
-          className="footer-profile-pic"
-        />
+        <button onClick={handleNavigateToFeed} className="footer-button">
+          <i className="butonFeed"></i>
+          <span>Home</span>
+        </button>
+        <button onClick={() => navigate("/profile")} className="footer-button">
+          <i className="butonPerfil"></i>
+          <span>Profile</span>
+        </button>
       </footer>
     </div>
   );
