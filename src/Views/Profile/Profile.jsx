@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import cr7 from "../../Images/cr7.png";
+import foto from "../../Images/foto.png"
+import foto1 from "../../Images/foto1.jpeg";
+import foto2 from "../../Images/foto2.jpeg";
 import "./profile.css";
 import Modal from "../../Components/Example/Modal";
 import UserPost from "../../Components/Example/UserPost";
@@ -74,17 +77,8 @@ const Profile = () => {
 
           {/* Publicaciones del perfil */}
           <div className="profile-posts">
-            {profileInfo && profileInfo.posts.length > 0 ? (
-              profileInfo.posts.map((post) => (
-                <Post
-                  key={post.id}
-                  photo={post.imageUrl}
-                  onClick={() => handleOpenModal(post)}
-                />
-              ))
-            ) : (
-              <p>No hay publicaciones</p>
-            )}
+
+          
           </div>
           {/* Botón de regreso al feed */}
           <button onClick={handleFeedClick} className="back-to-feed-btn">
