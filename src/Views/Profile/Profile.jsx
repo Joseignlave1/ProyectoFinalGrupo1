@@ -43,48 +43,32 @@ const Profile = () => {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <div className="profile-container">
-          {/* Header del perfil */}
-          <div className="profile-header">
-            <div className="profile-pic">
-              <img src={cr7} alt="perfil" />
-            </div>
+      <Container maxWidth="sm">
+        <div className="profile">
+          <header className="myprofile">
             {profileInfo ? (
-              <div className="profile-info">
-                <h1 className="nombreUsuario">{profileInfo.user.username}</h1>
-                <p className="descripcion">
-                  {profileInfo.user.description || "No description provided"}
-                </p>
-                <div className="profile-stats">
-                  <div>
-                    <h5>Posts</h5>
-                    <p>{profileInfo.posts.length}</p>
-                  </div>
-                  <div>
-                    <h5>Friends</h5>
-                    <p>{profileInfo.user.friends.length}</p>
-                  </div>
+              <>
+                <div className="user_edit_container">
+                  <img src={cr7} alt="" />
+                  <p>{profileInfo.user.username}</p>
+                  <button id="edit-profile-button">Edit Profile</button>
                 </div>
-                <div className="profile-editBtn">
-                  <button onClick={alternarEdicion}>Edit Profile</button>
+                <div className="stats">
+                  <p>{profileInfo.posts.length} Posts</p>
+                  <p>{profileInfo.user.friends.length} Friends</p>
                 </div>
-              </div>
+              </>
             ) : (
-              <p>Cargando profile...</p>
+              <div>Loading Profile</div>
             )}
-          </div>
-
-          {/* Publicaciones del perfil */}
-          <div className="profile-posts">
-
-          
-          </div>
-          {/* Botón de regreso al feed */}
-          <button onClick={handleFeedClick} className="back-to-feed-btn">
-            Regresar al Feed
-          </button>
+          </header>
         </div>
+      </Container>
+      <Container maxWidth="sm" className="gallery_container">
+        <img src={cr7} alt="" />
+        <img src={foto} alt="" />
+        <img src={foto1} alt="" />
+        <img src={foto2} alt="" />
       </Container>
     </>
   );
