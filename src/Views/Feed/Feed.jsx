@@ -6,8 +6,8 @@ import { getFeed, likePost } from "../../Services/postServices";
 
 const Feed = () => {
   const navigate = useNavigate();
+  const id = localStorage.getItem('user-id');
   const [posts, setPosts] = useState([]);
-
   const handleLogout = () => {
     localStorage.removeItem("jwt-token");
     navigate("/");
@@ -44,6 +44,7 @@ const Feed = () => {
 
   return (
     <div className="feed">
+      <button onClick={handleLogout}>Cerrar Sesion</button>
       <button className="cerrarSesion" onClick={handleLogout}>
         Cerrar Sesión
       </button>
@@ -53,6 +54,9 @@ const Feed = () => {
           <i className="fas fa-heart"></i>
           <i className="fas fa-plus"></i>
         </div>
+        <button onClick={() => {navigate(`/user/profile/${id}`)}}>
+          GO TO MY PROFILE
+        </button>
       </header>
 
       <div className="posts">

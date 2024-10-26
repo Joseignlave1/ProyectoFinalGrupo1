@@ -17,9 +17,7 @@ const Register = () => {
     try {
       const data = await postSingin(username, email, password);
       localStorage.setItem("jwt-token", data.token);
-      
       navigate("/");
-      return data;
     } catch (error) {
       
     }
@@ -58,11 +56,11 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" >
             Create Account
           </button>
         </form>
-        <p className="signup-text">
+         <p className="signup-text">
           Already have an account?{" "}
           <a href="/" onClick={() => (window.location.href = "/login")}>
             Login
