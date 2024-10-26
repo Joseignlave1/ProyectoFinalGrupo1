@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
 import { getFeed, likePost } from "../../Services/postServices";
@@ -44,7 +44,6 @@ const Feed = () => {
 
   return (
     <div className="feed">
-      <button onClick={handleLogout}>Cerrar Sesion</button>
       <button className="cerrarSesion" onClick={handleLogout}>
         Cerrar Sesión
       </button>

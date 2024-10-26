@@ -46,10 +46,7 @@ export const postSingin = async (username, email, password) => {
      console.log(error.message);
    }
  };
-=======
-    console.log( request );
-    localStorage.setItem("newUser", JSON.stringify({username, email, password}));
-}
+
 export const getFeed = async () => {
   try {
     const request = await fetch("http://localhost:3001/api/posts/feed", {
