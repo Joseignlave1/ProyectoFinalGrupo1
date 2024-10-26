@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
+import { getFeed, likePost } from "../../Services/postServices";
 
 const Feed = () => {
   const navigate = useNavigate();
@@ -16,22 +17,9 @@ const Feed = () => {
     navigate("/feed");
   };
 
-  // Método para dar like a un post
   const handleLikePost = async (postId) => {
     try {
-      const response = await fetch(`/api/posts/${postId}/like`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`, // Asegúrate de incluir el token
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Error al dar like al post");
-      }
-
-      const updatedPost = await response.json();
+      const updatedPost = await likePost(postId);
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
           post.id === updatedPost.id ? updatedPost : post
@@ -42,28 +30,23 @@ const Feed = () => {
     }
   };
 
-useEffect(() => {
-  const fetchPosts = async () => {
-    try {
-      const response = await fetch("/api/feed");
-
-      if (!response.ok) {
-        throw new Error("Error al obtener el feed");
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getFeed();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error al obtener el feed:", error);
       }
-
-      const data = await response.json();
-      setPosts(data);
-    } catch (error) {
-      console.error("Error al obtener el feed:", error);
-    }
-  };
-
-  fetchPosts();
-}, []);
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <div className="feed">
-      <button className="cerrarSesion" onClick={handleLogout}>Cerrar Sesion</button>
+      <button className="cerrarSesion" onClick={handleLogout}>
+        Cerrar Sesión
+      </button>
       <header className="feed-header">
         <h1>Fakestagram</h1>
         <div className="feed-actions">
