@@ -42,15 +42,24 @@ const Feed = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
+useEffect(() => {
+  const fetchPosts = async () => {
+    try {
       const response = await fetch("/api/feed");
-      const data = await response.json();
-      setPosts(data); // Al recibir los posts ya ordenados, se pueden setear directamente
-    };
 
-    fetchPosts();
-  }, []);
+      if (!response.ok) {
+        throw new Error("Error al obtener el feed");
+      }
+
+      const data = await response.json();
+      setPosts(data);
+    } catch (error) {
+      console.error("Error al obtener el feed:", error);
+    }
+  };
+
+  fetchPosts();
+}, []);
 
   return (
     <div className="feed">
@@ -76,9 +85,11 @@ const Feed = () => {
       <footer className="feed-footer">
         <button onClick={handleNavigateToFeed} className="footer-button">
           <i className="fas fa-home"></i>
+          <span>Home</span>
         </button>
         <button onClick={() => navigate("/profile")} className="footer-button">
-          <i className="fas fa-user"></i> {/* Ícono para el perfil */}
+          <i className="fas fa-user"></i>
+          <span>Profile</span>
         </button>
       </footer>
     </div>

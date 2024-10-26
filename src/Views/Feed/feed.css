@@ -111,25 +111,25 @@
 
 .feed-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #fff;
   border-top: 1px solid #ddd;
 }
+
 .footer-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
 }
 
 .footer-button i {
-  font-size: 24px;
-  color: #000; /* Color del ícono */
-}
-
-.footer-button:focus {
-  outline: none;
+  font-size: 20px;
 }
 
 /* Ajustes responsivos */
