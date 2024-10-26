@@ -30,7 +30,7 @@ const Profile = () => {
       try {
         const response = await fetch(`http://localhost:3001/api/user/profile/${id}`, {
           headers: {
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (response.ok) {
@@ -64,10 +64,10 @@ const Profile = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          userName: userName,
+          username: userName,
           profilePicture: photo,
         }),
       });
