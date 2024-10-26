@@ -63,7 +63,7 @@ useEffect(() => {
 
   return (
     <div className="feed">
-      <button onClick={handleLogout}>Cerrar Sesion</button>
+      <button className="cerrarSesion" onClick={handleLogout}>Cerrar Sesion</button>
       <header className="feed-header">
         <h1>Fakestagram</h1>
         <div className="feed-actions">

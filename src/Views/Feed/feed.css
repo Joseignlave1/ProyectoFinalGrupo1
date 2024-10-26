@@ -16,6 +16,14 @@
   padding: 15px;
   border-bottom: 1px solid #ddd;
 }
+.cerrarSesion{
+    width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
 
 .feed-header h1 {
   font-size: 24px;
