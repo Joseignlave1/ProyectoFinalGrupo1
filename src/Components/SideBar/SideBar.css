@@ -1,0 +1,16 @@
+.menu-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .menu-image {
+    width: 40px;
+    height: auto;
+  }
+  

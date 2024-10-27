@@ -1,18 +1,11 @@
 import React from "react";
-import "./postCard.css";
+import "./UserPost.css";
+import Modal from "../Modal/Modal";
 
-const PostCard = ({ post }) => {
+const UserPost = ({ post, onClose}) => {
   return (
-    <div className="post-card">
-      <div className="post-header">
-        <img
-          src={post.user.profilePicture}
-          alt="Profile"
-          className="profile-pic"
-        />
-        <p className="post-username">{post.user.username}</p>
-        <i className="fas fa-ellipsis-h"></i>
-      </div>
+    <Modal onClose={onClose}>
+      <div className="post-card">
 
       <img src={`http://localhost:3001/${post.imageUrl}`} alt="Post content" className="post-img"  />
 
@@ -27,10 +20,9 @@ const PostCard = ({ post }) => {
         </p>
         <p className="post-description">
           <strong>{post.user.username}</strong> {post.caption}
-          <span className="see-more">plus</span>
         </p>
         <p className="view-comments">
-          Voir les {post.comments.length} commentaires
+          Cantidad de comentarios: {post.comments.length}
         </p>
         <div className="comments">
           {post.comments.map((comment, index) => (
@@ -42,7 +34,8 @@ const PostCard = ({ post }) => {
         <p className="time">{new Date(post.createdAt).toLocaleTimeString()}</p>
       </div>
     </div>
+    </Modal>
   );
 };
 
-export default PostCard;
+export default UserPost;
