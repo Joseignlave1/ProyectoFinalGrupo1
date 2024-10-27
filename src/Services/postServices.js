@@ -44,7 +44,8 @@ export const likePost = async (postId) => {
   }
 };
 
-const saveUserProfile = async (username, profilePicture) => {
+ export const saveUserProfile = async (username, profilePicture) => {
+  const token = localStorage.getItem("token");
   try {
     const response = await fetch(
       `http://localhost:3001/api/user/profile/edit`,
@@ -63,5 +64,27 @@ const saveUserProfile = async (username, profilePicture) => {
     return data;
   } catch (error) {
     console.error("Error en la solicitud:", error);
+  }
+};
+
+export const followUser = async (userId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/api/user/add-friend/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) {
+      console.log("Error al seguir al usuario");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al seguir al usuario:", error);
   }
 };

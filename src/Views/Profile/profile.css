@@ -83,8 +83,8 @@
 }
 
 .profile-posts img {
-  width: 100%;
-  height: auto;
+  width: 40vh;
+  height: 40vh;
   border-radius: 10px;
 }
 

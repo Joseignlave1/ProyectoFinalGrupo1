@@ -1,5 +1,46 @@
-/* postCard.css */
-.post-card {
+.feed {
+  background-color: #fff;
+  max-width: 900px; 
+  width: 100%; 
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.cerrarSesion{
+    width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
+
+.feed-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.feed-actions i {
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.posts {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.post {
   border-bottom: 1px solid #ddd;
 }
 
@@ -66,8 +107,71 @@
   margin: 0;
 }
 
+.response {
+  margin-left: 10px;
+}
+
 .time {
   font-size: 12px;
   color: #888;
   margin-top: 10px;
+}
+
+.feed-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.footer-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-button i {
+  font-size: 20px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1200px) {
+  .feed {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feed {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .feed-header h1 {
+    font-size: 20px;
+  }
+
+  .post-header {
+    padding: 8px 10px;
+  }
+
+  .post-actions i {
+    font-size: 20px;
+  }
+
+  .feed-footer i {
+    font-size: 20px;
+  }
 }

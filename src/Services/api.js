@@ -10,6 +10,7 @@ export const postLogin = async (email, password) => {
     throw new Error("Credenciales Incorrectass");
   }
   const data = await request.json();
+  localStorage.setItem("token", data.token);
   return data;
 };
 
