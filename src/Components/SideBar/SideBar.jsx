@@ -29,7 +29,7 @@ export default function TemporaryDrawer({ open, toggleDrawer }) {
         navigate(`/user/profile/${userId}`);
         break;
       case "Cerrar Sesión":
-        localStorage.removeItem("token");
+        localStorage.removeItem("jwt-token");
         navigate("/");
         break;
       default:
