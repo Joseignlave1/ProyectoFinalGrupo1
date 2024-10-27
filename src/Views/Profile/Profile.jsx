@@ -44,15 +44,17 @@ const Profile = () => {
         .then((updatedProfile) => {
           setProfileInfo(updatedProfile);
           setModoEdicion(false);
+          // Actualizar los posts después de guardar el perfil
+          getProfileId(id).then((data) => {
+            setProfileInfo(data);
+          }).catch((error) => {
+            console.error("Error fetching profile data:", error);
+          });
         })
         .catch((error) => {
           console.error("Error saving profile data:", error);
         });
     }
-  };
-
-  const handleFeedClick = () => {
-    navigate("/feed");
   };
 
   const seguirPerfil = () => {
@@ -157,10 +159,6 @@ const Profile = () => {
               </div>
             </div>
           )}
-          {/* Botón de regreso al feed */}
-          <button onClick={handleFeedClick} className="back-to-feed-btn">
-            Regresar al Feed
-          </button>
         </div>
       </Container>
     </>
