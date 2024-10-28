@@ -65,6 +65,15 @@ const Profile = () => {
     });
   };
 
+  const handleLikeChange = (updatedPost) => {
+    setProfileInfo((prevInfo) => ({
+      ...prevInfo,
+      posts: prevInfo.posts.map((post) =>
+        post._id === updatedPost._id ? updatedPost : post
+      ),
+    }));
+  };
+
   const handleOpenModal = (post) => {
     setSelectedPost(post);
   };
@@ -155,7 +164,7 @@ const Profile = () => {
           {selectedPost && (
             <div className="modal-overlay" onClick={handleCloseModal}>
               <div className="modal-content">
-                <UserPost post={selectedPost} onClose={handleCloseModal} />
+                <UserPost post={selectedPost} id={isLoggedUserProfile} onClose={handleCloseModal} onLikeChange={handleLikeChange}/>
               </div>
             </div>
           )}
