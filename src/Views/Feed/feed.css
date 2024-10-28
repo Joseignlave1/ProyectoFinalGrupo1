@@ -1,0 +1,49 @@
+.feed {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+ .feed-header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 60px;
+} 
+ .feed-content {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+} 
+
+.posts {
+}
+
+.post-header, .post-actions, .post-details {
+  padding: 15px;
+} 
+
+.cerrarSesion {
+  width: auto;
+  padding: 10px 20px;
+  margin: 15px auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+} 
+
+.cerrarSesion:hover {
+  background-color: #ccc;
+} 

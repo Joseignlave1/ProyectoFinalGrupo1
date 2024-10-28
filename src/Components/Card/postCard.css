@@ -1,0 +1,76 @@
+.post-card {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.profile-pic {
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.post-username {
+  font-weight: bold;
+  font-size: 18px; /* Aumenta el tamaño de la fuente */
+  margin-left: 15px;
+  flex: 1;
+}
+
+.post-img {
+  width: 100%;
+  max-height: 600px; /* Aumenta el máximo de la imagen */
+  object-fit: cover;
+}
+
+.post-actions {
+  display: flex;
+  padding: 15px 20px; /* Aumenta el padding */
+  font-size: 28px; /* Aumenta el tamaño de los íconos */
+}
+
+.post-actions i {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.post-details {
+  padding: 0 20px 20px; /* Aumenta el padding */
+}
+
+.likes {
+  font-weight: bold;
+  font-size: 16px; /* Aumenta el tamaño de la fuente */
+  margin-bottom: 5px;
+}
+
+.post-description {
+  font-size: 16px; /* Aumenta el tamaño de la fuente */
+  margin-bottom: 5px;
+}
+
+.see-more {
+  color: #888;
+  cursor: pointer;
+}
+
+.view-comments {
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.comments p {
+  margin: 0;
+  font-size: 15px; /* Aumenta el tamaño de los comentarios */
+}
+
+.time {
+  font-size: 14px; /* Aumenta el tamaño de la hora */
+  color: #888;
+  margin-top: 10px;
+}
