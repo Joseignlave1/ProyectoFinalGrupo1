@@ -1,45 +1,60 @@
 import React from "react";
 import "./postCard.css";
+import { likePost } from "../../Services/postServices";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, setPosts }) => {
+  const handleLikePost = async () => {
+    try {
+      const updatedPost = await likePost(post._id);
+      setPosts((prevPosts) =>
+        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
+      );
+    } catch (error) {
+      console.error("Error al dar like:", error);
+    }
+  };
+
   return (
-    <div className="post-card">
-      <div className="post-header">
+    <div className="post-card-container">
+      <div className="post-card-header">
         <img
           src={post.user.profilePicture}
-          alt="Profile"
-          className="profile-pic"
+          alt="Foto de perfil"
+          className="post-card-profile-pic"
         />
-        <p className="post-username">{post.user.username}</p>
-        <i className="fas fa-ellipsis-h"></i>
+        <p className="post-card-username">{post.user.username}</p>
       </div>
 
-      <img src={`http://localhost:3001/${post.imageUrl}`} alt="Post content" className="post-img"  />
+      <img
+        src={post.imageUrl}
+        alt="Contenido del post"
+        className="post-card-image"
+      />
 
-      <div className="post-actions">
-        <i className="far fa-heart"></i>
-        <i className="far fa-comment"></i>
-      </div>
-
-      <div className="post-details">
-        <p className="likes">
-          <strong>{post.likes.length} Likes</strong>
+      <div className="post-card-details">
+        <p className="post-card-likes">
+          <strong>{post.likes.length} Me gusta</strong>
         </p>
-        <p className="post-description">
+        <button className="post-card-like-icon" onClick={handleLikePost}>
+          LIKE
+        </button>
+        <p className="post-card-description">
           <strong>{post.user.username}</strong> {post.caption}
-          <span className="see-more">plus</span>
+          <span className="post-card-see-more">más</span>
         </p>
-        <p className="view-comments">
-          Voir les {post.comments.length} commentaires
+        <p className="post-card-view-comments">
+          Ver los {post.comments.length} comentarios
         </p>
-        <div className="comments">
+        <div className="post-card-comments">
           {post.comments.map((comment, index) => (
             <p key={index}>
               <strong>{comment.username}</strong> {comment.text}
             </p>
-          ))}a
+          ))}
         </div>
-        <p className="time">{new Date(post.createdAt).toLocaleTimeString()}</p>
+        <p className="post-card-time">
+          {new Date(post.createdAt).toLocaleTimeString()}
+        </p>
       </div>
     </div>
   );

@@ -1,177 +1,83 @@
-.feed {
+.post-card-container {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
   background-color: #fff;
-  max-width: 900px; 
-  width: 100%; 
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 16px auto;
+  overflow: hidden;
 }
 
-.feed-header {
+.post-card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
-.cerrarSesion{
-    width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  background-color: #e0e0e0;
+  padding: 16px;
 }
 
-.feed-header h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.feed-actions i {
-  margin-left: 15px;
-  font-size: 20px;
-}
-
-.posts {
-  flex-grow: 1;
-  overflow-y: auto;
-}
-
-.post {
-  border-bottom: 1px solid #ddd;
-}
-
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-}
-
-.profile-pic {
+.post-card-profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-right: 12px;
+}
+
+.post-card-username {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.post-card-options-icon {
+  margin-left: auto;
+  color: #999;
+  cursor: pointer;
+}
+
+.post-card-image {
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
-.post-username {
-  font-weight: bold;
-  margin-left: 10px;
-  flex: 1;
-}
-
-.post-img {
-  width: 100%;
-  height: auto;
-}
-
-.post-actions {
-  display: flex;
-  padding: 10px 15px;
-  font-size: 24px;
-}
-
-.post-actions i {
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.post-details {
-  padding: 0 15px 15px;
-}
-
-.likes {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.post-description {
-  margin-bottom: 5px;
-}
-
-.see-more {
-  color: #888;
-  cursor: pointer;
-}
-
-.view-comments {
-  color: #888;
-  margin-bottom: 5px;
-}
-
-.comments p {
-  margin: 0;
-}
-
-.response {
-  margin-left: 10px;
-}
-
-.time {
-  font-size: 12px;
-  color: #888;
-  margin-top: 10px;
-}
-
-.feed-footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-}
-
-.footer-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 14px;
-  color: #333;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.footer-button i {
+.post-card-like-icon,
+.post-card-comment-icon {
   font-size: 20px;
+  color: #999;
+  cursor: pointer;
 }
 
-/* Ajustes responsivos */
-@media (max-width: 1200px) {
-  .feed {
-    max-width: 800px;
-  }
+.post-card-details {
+  padding: 0 16px 16px;
 }
 
-@media (max-width: 1024px) {
-  .feed {
-    max-width: 700px;
-  }
+.post-card-likes {
+  font-weight: bold;
+  margin: 8px 0;
 }
 
-@media (max-width: 768px) {
-  .feed {
-    max-width: 100%;
-    padding: 0 10px;
-  }
+.post-card-description {
+  margin: 8px 0;
+  line-height: 1.4;
+}
 
-  .feed-header h1 {
-    font-size: 20px;
-  }
+.post-card-see-more {
+  color: #007bff;
+  cursor: pointer;
+}
 
-  .post-header {
-    padding: 8px 10px;
-  }
+.post-card-view-comments {
+  color: #555;
+  cursor: pointer;
+  margin: 8px 0;
+}
 
-  .post-actions i {
-    font-size: 20px;
-  }
+.post-card-comments {
+  margin: 8px 0;
+  color: #444;
+}
 
-  .feed-footer i {
-    font-size: 20px;
-  }
+.post-card-time {
+  font-size: 12px;
+  color: #aaa;
+  text-align: right;
 }
