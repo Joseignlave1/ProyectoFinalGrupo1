@@ -25,11 +25,7 @@ const PostCard = ({ post, setPosts }) => {
         <p className="post-card-username">{post.user.username}</p>
       </div>
 
-      <img
-        src={post.imageUrl}
-        alt="Contenido del post"
-        className="post-card-image"
-      />
+      <img src={`http://localhost:3001/${post.imageUrl}`} alt="Post content" className="post-img"  />
 
       <div className="post-card-details">
         <p className="post-card-likes">
