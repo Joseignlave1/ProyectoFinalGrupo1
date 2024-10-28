@@ -7,16 +7,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
-import Drawer from "@mui/material/Drawer";
 import "./SideBar.css";
-
 
 import feed from "../../Images/feed.png";
 import perfil from "../../Images/perfil.png";
 import LogoutIcon from "@mui/icons-material/ExitToApp";
-import menu from "../../Images/menu.png";
 
-export default function TemporaryDrawer({ open, toggleDrawer }) {
+const SideBar = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem('user-id');
 
@@ -49,8 +46,8 @@ export default function TemporaryDrawer({ open, toggleDrawer }) {
     { text: "Cerrar Sesión", icon: <LogoutIcon /> },
   ];
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+  return (
+    <div className="sidebar">
       <h2 style={{ padding: '16px', textAlign: 'center' }}>Fakestagram</h2>
       <List>
         {menuItems.map((item) => (
@@ -63,17 +60,8 @@ export default function TemporaryDrawer({ open, toggleDrawer }) {
         ))}
       </List>
       <Divider />
-    </Box>
+    </div>
   );
+};
 
-  return (
-    <>
-      <button onClick={toggleDrawer(true)} className="menu-button">
-        <img src={menu} alt="Menu" className="menu-image" />
-      </button>
-      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
-        {DrawerList}
-      </Drawer>
-    </>
-  );
-}
+export default SideBar;

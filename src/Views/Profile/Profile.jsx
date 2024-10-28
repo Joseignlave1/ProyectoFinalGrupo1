@@ -9,7 +9,7 @@ import { saveUserProfile } from "../../Services/postServices";
 import "./profile.css";
 import { useParams } from "react-router-dom";
 import {followUser} from "../../Services/postServices";
-import TemporaryDrawer from "../../Components/SideBar/SideBar";
+import SideBar from "../../Components/SideBar/SideBar";
 
 
 
@@ -65,6 +65,15 @@ const Profile = () => {
     });
   };
 
+  const handleLikeChange = (updatedPost) => {
+    setProfileInfo((prevInfo) => ({
+      ...prevInfo,
+      posts: prevInfo.posts.map((post) =>
+        post._id === updatedPost._id ? updatedPost : post
+      ),
+    }));
+  };
+
   const handleOpenModal = (post) => {
     setSelectedPost(post);
   };
@@ -86,7 +95,7 @@ const Profile = () => {
   return (
     <>
       <CssBaseline />
-      <TemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+      <SideBar/>
       <Container maxWidth="lg" style={{ position: 'relative' }}>
         <div className="profile-container">
           <div className="profile-header">
@@ -155,7 +164,7 @@ const Profile = () => {
           {selectedPost && (
             <div className="modal-overlay" onClick={handleCloseModal}>
               <div className="modal-content">
-                <UserPost post={selectedPost} onClose={handleCloseModal} />
+                <UserPost post={selectedPost} id={isLoggedUserProfile} onClose={handleCloseModal} onLikeChange={handleLikeChange}/>
               </div>
             </div>
           )}
