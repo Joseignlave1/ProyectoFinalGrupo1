@@ -5,7 +5,7 @@ import PostCard from "../../Components/Card/PostCard";
 import { getFeed, likePost } from "../../Services/postServices";
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import TemporaryDrawer from '../../Components/SideBar/SideBar';
+import SideBar from "../../Components/SideBar/SideBar";
 
 const Feed = () => {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Feed = () => {
   return (
     <>
       <CssBaseline />
-      <TemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+      <SideBar />
       <Container maxWidth="lg">
         <div className="feed">
           <header className="feed-header">

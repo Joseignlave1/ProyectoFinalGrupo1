@@ -9,7 +9,7 @@ import { saveUserProfile } from "../../Services/postServices";
 import "./profile.css";
 import { useParams } from "react-router-dom";
 import {followUser} from "../../Services/postServices";
-import TemporaryDrawer from "../../Components/SideBar/SideBar";
+import SideBar from "../../Components/SideBar/SideBar";
 
 
 
@@ -95,7 +95,7 @@ const Profile = () => {
   return (
     <>
       <CssBaseline />
-      <TemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+      <SideBar/>
       <Container maxWidth="lg" style={{ position: 'relative' }}>
         <div className="profile-container">
           <div className="profile-header">
