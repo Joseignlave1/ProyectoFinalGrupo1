@@ -32,7 +32,7 @@ const Login = () => {
         <div className="logo">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <h1 className="title">fakestagram</h1>
+        <h1 className="title">Fakestagram</h1>
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -55,7 +55,7 @@ const Login = () => {
             className="login-button"
             disabled={handleDisable}
           >
-            Login
+            Ingresar
           </button>
         </form>
         <p className="signup-text">

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -33,8 +33,8 @@ const Register = () => {
         <div className="logo">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <h1 className="title">fakestagram</h1>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <h1 className="title">Fakestagram</h1>
+        <form className="register-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="username"
@@ -63,10 +63,10 @@ const Register = () => {
             Crear cuenta
           </button>
         </form>
-        <p className="signup-text">
+        <p className="login-text">
           Ya tienes una cuenta?{" "}
           <a href="/" onClick={() => (window.location.href = "/login")}>
-            Login
+            Ingresa aquí
           </a>
         </p>
         {errorMessage && <p>{errorMessage}</p>}
