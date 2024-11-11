@@ -60,11 +60,11 @@ const Register = () => {
             required
           />
           <button type="submit" className="login-button">
-            Create Account
+            Crear cuenta
           </button>
         </form>
         <p className="signup-text">
-          Already have an account?{" "}
+          Ya tienes una cuenta?{" "}
           <a href="/" onClick={() => (window.location.href = "/login")}>
             Login
           </a>

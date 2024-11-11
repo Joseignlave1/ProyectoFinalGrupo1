@@ -59,7 +59,7 @@ const Login = () => {
           </button>
         </form>
         <p className="signup-text">
-          Create account <a href="/register">here</a>
+          Crear cuenta <a href="/register">Ingresa aquí</a>
         </p>
         {errorMessage && <p>{errorMessage}</p>}
       </Container>
