@@ -69,6 +69,7 @@ const Register = () => {
             Login
           </a>
         </p>
+        {errorMessage && <p>{errorMessage}</p>}
       </Container>
     </>
   );
