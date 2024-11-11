@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -16,10 +17,12 @@ const Register = () => {
     e.preventDefault();
     try {
       const data = await postSingin(username, email, password);
+      // Guardamos token JWT en localStorage
       localStorage.setItem("jwt-token", data.token);
-      navigate("/");
+      // Redirige al feed
+      navigate("/feed");
     } catch (error) {
-      
+      setErrorMessage("Error al crear el usuario, Intente nuevamente");
     }
   };
 
@@ -56,11 +59,11 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className="login-button" >
+          <button type="submit" className="login-button">
             Create Account
           </button>
         </form>
-         <p className="signup-text">
+        <p className="signup-text">
           Already have an account?{" "}
           <a href="/" onClick={() => (window.location.href = "/login")}>
             Login
