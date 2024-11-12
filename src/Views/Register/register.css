@@ -1,9 +1,9 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: "Arial", sans-serif;
   display: flex;
@@ -13,114 +13,95 @@ body {
   background-color: #fff;
   margin: 0;
 }
-
-.login-container {
-  text-align: center;
-  width: 320px;
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: width 0.3s ease;
+/* Imagen del logo */
+.logo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
+  margin-bottom: 15px;
 }
 
-.logo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
-  background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
+/* Título principal */
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ba73ff, #94d8d3);
+-webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;
   margin-bottom: 20px;
 }
 
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  background: linear-gradient(to right, #ba73ff, #94d8d3);
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 30px;
-}
-
-.login-form {
+/* Estilos del formulario */
+.register-form {
   display: flex;
   flex-direction: column;
 }
 
+/* Campos de entrada */
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 8px 0;
   border: none;
   border-radius: 5px;
   background-color: #e0e0e0;
+  font-size: 14px;
 }
 
-.login-button {
+/* Botón de registro */
+.register-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #b678dd;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px 0;
 }
 
-.login-button:hover {
+/* Cambio de color al pasar el mouse sobre el botón */
+.register-button:hover {
   background-color: #a865c9;
 }
 
-.signup-text {
-  margin-top: 20px;
+/* Texto de enlace de registro */
+.login-text {
+  margin-top: 15px;
 }
 
-.signup-text a {
+/* Estilo del enlace dentro del texto de registro */
+.login-text a {
   color: #000;
   text-decoration: none;
   font-weight: bold;
 }
 
-.signup-text a:hover {
+
+/* Efecto de subrayado al pasar el mouse sobre el enlace */
+
+.login-text a:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .login-container {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 28px;
-  }
-
-  .input-field {
-    padding: 8px;
-  }
-
-  .login-button {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-
+/* Media  pantallas pequeñas */
 @media (max-width: 480px) {
-  .login-container {
-    width: 100%;
-    padding: 10px;
-  }
+
 
   .title {
-    font-size: 24px;
+    font-size: 20px; 
   }
 
   .input-field {
-    padding: 6px;
+    padding: 10px; 
+    font-size: 12px; 
   }
 
-  .login-button {
-    font-size: 12px;
-    padding: 6px;
+  .register-button {
+    padding: 10px; 
+    font-size: 12px; 
   }
 }
