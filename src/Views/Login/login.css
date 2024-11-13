@@ -14,113 +14,108 @@ body {
   margin: 0;
 }
 
-.login-container {
-  text-align: center;
-  width: 320px;
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: width 0.3s ease;
-}
 
+/* Imagen del logo */
 .logo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
   background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
-
+/* Título principal */
 .title {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
   background: linear-gradient(to right, #ba73ff, #94d8d3);
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; 
+  background-clip: text;
   color: transparent;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-
+/* Estilos del formulario */
 .login-form {
   display: flex;
   flex-direction: column;
 }
-
+/* Campos de entrada */
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 8px 0;
   border: none;
   border-radius: 5px;
   background-color: #e0e0e0;
 }
-
+/* Botón de login */
 .login-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #b678dd;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px 0;
 }
-
+/* Cambio de color al pasar el mouse sobre el botón */
 .login-button:hover {
   background-color: #a865c9;
 }
-
+/* Texto de enlace de login */
 .signup-text {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
+/* Estilo del enlace dentro del texto de registro */
 .signup-text a {
   color: #000;
   text-decoration: none;
   font-weight: bold;
 }
+/* Efecto de subrayado al pasar el mouse sobre el enlace */
 
 .signup-text a:hover {
   text-decoration: underline;
 }
-
-@media (max-width: 768px) {
+/* Media  pantallas pequeñas */
+@media (min-width: 768px) {
   .login-container {
-    width: 90%;
-    padding: 15px;
+    max-width: 400px;
+    padding: 20px;
   }
 
   .title {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .input-field {
-    padding: 8px;
-  }
-
-  .login-button {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-container {
-    width: 100%;
     padding: 10px;
   }
 
+  .login-button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-container {
+    max-width: 500px;
+    padding: 25px;
+  }
+
   .title {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   .input-field {
-    padding: 6px;
+    padding: 12px;
   }
 
   .login-button {
-    font-size: 12px;
-    padding: 6px;
+    font-size: 18px;
+    padding: 14px;
   }
 }

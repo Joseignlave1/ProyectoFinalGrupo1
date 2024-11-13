@@ -44,7 +44,7 @@ export const likePost = async (postId) => {
   }
 };
 
-export const saveUserProfile = async (username, profilePicture) => {
+ export const saveUserProfile = async (username, description, profilePicture) => {
   const token = localStorage.getItem("token");
   try {
     const response = await fetch(
@@ -56,8 +56,7 @@ export const saveUserProfile = async (username, profilePicture) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          username,
-          profilePicture,
+          username, description, profilePicture
         }),
       }
     );
