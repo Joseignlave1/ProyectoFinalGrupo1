@@ -27,14 +27,12 @@ const Feed = () => {
       const post = posts.find((p) => p._id === postId);
       let updatedPost;
       if (post.likes.includes(id)) {
-        // Si el usuario ya dio like, lo elimina
         updatedPost = await removeLike(postId);
       } else {
-        // Si no ha dado like, lo agrega
         updatedPost = await likePost(postId);
       }
       setPosts((prevPosts) =>
-        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
+          prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
       console.error("Error al dar o quitar like:", error);
@@ -58,18 +56,22 @@ const Feed = () => {
   };
 
   return (
-    <>
-      <CssBaseline />
-      <SideBar />
-      <Container maxWidth="lg">
-        <div className="feed"></div>
-        <div className="posts">
-          {posts.map((post) => (
-            <PostCard key={post._id} post={post} setPosts={setPosts} />
-          ))}
-        </div>
-      </Container>
-    </>
+      <div style={{ display: 'flex' }}>
+        <SideBar />
+        <Container
+            maxWidth={false}
+            style={{ padding: '1rem', margin: '0 auto', flexGrow: 1 }}
+        >
+          <CssBaseline />
+          <div className="feed">
+            <div className="posts">
+              {posts.map((post) => (
+                  <PostCard key={post._id} post={post} setPosts={setPosts} />
+              ))}
+            </div>
+          </div>
+        </Container>
+      </div>
   );
 };
 
