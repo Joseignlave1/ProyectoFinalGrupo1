@@ -34,8 +34,8 @@
 }
 
 .profile-info {
-  flex: 3;
-  padding-left: 20px;
+  flex: 1;
+  padding-left: 40px;
   text-align: left;
   min-width: 0;
 }
@@ -54,6 +54,7 @@
 .profile-stats h5 {
   margin: 0;
   font-weight: normal;
+  white-space: nowrap;
 }
 
 .profile-editBtn {
@@ -67,6 +68,7 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .profile-posts {

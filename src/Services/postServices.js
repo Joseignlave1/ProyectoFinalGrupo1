@@ -45,7 +45,7 @@ export const likePost = async (postId) => {
 };
 
  export const saveUserProfile = async (username, description, profilePicture) => {
-  const token = localStorage.getItem("token");
+  //const token = localStorage.getItem("token");
   try {
     const response = await fetch(
       `http://localhost:3001/api/user/profile/edit`,
@@ -60,10 +60,15 @@ export const likePost = async (postId) => {
         }),
       }
     );
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.statusText}`);
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error en la solicitud:", error);
+    throw error; // Lanza el error para que pueda ser manejado por el llamador
   }
 };
 
@@ -114,3 +119,25 @@ export const removeLike = async (postId) => {
     throw error;
   }
 };
+
+export const unfollowUser = async (userId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/api/user/remove-friend/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) {
+      console.log("Error al dejar de seguir al usuario");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al dejar de seguir al usuario:", error);
+  }
+}

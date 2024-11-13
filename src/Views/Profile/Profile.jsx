@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { followUser } from "../../Services/postServices";
 import SideBar from "../../Components/SideBar/SideBar";
 import defaultImage from "../../Images/defaultImage.jpg";
+import { unfollowUser } from "../../Services/postServices";
 
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState(null);
@@ -20,6 +21,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const loggedInUserId = localStorage.getItem("user-id");
   const { id } = useParams();
+  const [isFollowing, setIsFollowing] = useState(false);
 
   const isLoggedUserProfile = loggedInUserId === id;
 
@@ -27,7 +29,11 @@ const Profile = () => {
     if (id) {
       getProfileId(id)
         .then((data) => {
+          console.log(data.user);
           setProfileInfo(data);
+          setIsFollowing(
+            data.user.friends.some((friend) => friend._id === loggedInUserId)
+          );
         })
         .catch((error) => {
           console.error("Error fetching profile data:", error);
@@ -41,18 +47,30 @@ const Profile = () => {
 
   const manejarGuardar = () => {
     if (profileInfo) {
+      const { username, description, profilePicture } = profileInfo.user;
+      const updatedUsername = username.trim() !== "" ? username : " ";
+      const updatedDescription = description.trim() !== "" ? description : " ";
+      const updatedProfilePicture =
+        profilePicture.trim() !== ""
+          ? profilePicture
+          : "https://i.pinimg.com/736x/79/8f/bf/798fbf62ba74a844ceeef90b83c76e59.jpg";
+
       saveUserProfile(
-        profileInfo.user.username,
-        profileInfo.user.description,
-        profileInfo.user.profilePicture
+        updatedUsername,
+        updatedDescription,
+        updatedProfilePicture
       )
         .then((updatedProfile) => {
           setProfileInfo(updatedProfile);
           setModoEdicion(false);
-          // Actualizar los posts después de guardar el perfil
           getProfileId(id)
             .then((data) => {
               setProfileInfo(data);
+              setIsFollowing(
+                data.user.friends.some(
+                  (friend) => friend._id === loggedInUserId
+                )
+              );
             })
             .catch((error) => {
               console.error("Error fetching profile data:", error);
@@ -65,12 +83,46 @@ const Profile = () => {
   };
 
   const seguirPerfil = () => {
+    if (
+      profileInfo.user.friends.some((friend) => friend._id === loggedInUserId)
+    ) {
+      console.log("Ya sigues a este usuario");
+      return;
+    }
     followUser(id)
       .then((data) => {
         console.log(data);
+        setProfileInfo((prevInfo) => ({
+          ...prevInfo,
+          user: {
+            ...prevInfo.user,
+            friends: [...prevInfo.user.friends, { _id: loggedInUserId }],
+          },
+        }));
+        setIsFollowing(true);
       })
       .catch((error) => {
         console.error("Error al seguir usuario:", error);
+      });
+  };
+
+  const unfollowProfile = () => {
+    unfollowUser(id)
+      .then((data) => {
+        console.log(data);
+        setIsFollowing(false);
+        setProfileInfo((prevInfo) => ({
+          ...prevInfo,
+          user: {
+            ...prevInfo.user,
+            friends: prevInfo.user.friends.filter(
+              (friend) => friend._id !== loggedInUserId
+            ),
+          },
+        }));
+      })
+      .catch((error) => {
+        console.error("Error al dejar de seguir usuario:", error);
       });
   };
 
@@ -99,6 +151,8 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
+  //const isFollowing = profileInfo.user.friends && profileInfo.user.friends.includes(loggedInUserId);
+
   return (
     <>
       <CssBaseline />
@@ -124,7 +178,11 @@ const Profile = () => {
                   </div>
                 ) : (
                   <div className="profile-editBtn">
-                    <button onClick={seguirPerfil}>Seguir</button>
+                    <button
+                      onClick={isFollowing ? unfollowProfile : seguirPerfil}
+                    >
+                      {isFollowing ? "Unfollow" : "Follow"}
+                    </button>
                   </div>
                 )}
               </div>
@@ -138,8 +196,7 @@ const Profile = () => {
                   <h5>
                     {profileInfo.user.friends
                       ? profileInfo.user.friends.length
-                      : 0}{" "}
-                    Following
+                      : 0} Friends
                   </h5>
                 </div>
               </div>
