@@ -18,7 +18,8 @@ const PostCard = ({ post, setPosts }) => {
     <div className="post-card-container">
       <div className="post-card-header">
         <img
-          src={post.user.profilePicture}
+          src={post.user.profilePicture ||
+            "https://i.pinimg.com/736x/79/8f/bf/798fbf62ba74a844ceeef90b83c76e59.jpg"} 
           alt="Foto de perfil"
           className="post-card-profile-pic"
         />
