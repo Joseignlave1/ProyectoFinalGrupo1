@@ -5,13 +5,13 @@ import Register from "./Views/Register/Register";
 import Feed from './Views/Feed/Feed';
 import Profile from './Views/Profile/Profile';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
-import NotAuthorized from './Views/NotAuthorized/NotAuthorized';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+            <Route path="*" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
             path="/feed"
@@ -29,8 +29,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<div>Not Found</div>} />
-          <Route path="/notAuthorized" element={<NotAuthorized />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>
