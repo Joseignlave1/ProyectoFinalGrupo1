@@ -34,9 +34,8 @@ const Login = () => {
   };
 
   return (
-      <>
-        <CssBaseline />
-        <Container maxWidth="sm">
+      <div className="wrapp">
+        <Container className="contenedor" maxWidth="sm">
           <div className="logo">
             <img src={logo} className="App-logo" alt="logo" />
           </div>
@@ -71,7 +70,7 @@ const Login = () => {
           </p>
           {errorMessage && <p>{errorMessage}</p>}
         </Container>
-      </>
+      </div>
   );
 };
 

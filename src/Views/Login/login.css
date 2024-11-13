@@ -1,20 +1,17 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Arial", sans-serif;
+.wrapp {
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #fff;
-  margin: 0;
 }
 
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 
+}
 /* Imagen del logo */
 .logo img {
   width: 70px;
@@ -23,49 +20,59 @@ body {
   background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
   margin-bottom: 15px;
 }
+
 /* Título principal */
 .title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   background: linear-gradient(to right, #ba73ff, #94d8d3);
-  -webkit-background-clip: text; 
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   margin-bottom: 20px;
+  text-align: center
 }
+
 /* Estilos del formulario */
 .login-form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
+
 /* Campos de entrada */
 .input-field {
   width: 100%;
   padding: 12px;
   margin: 8px 0;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #e0e0e0;
+  background-color: #f1f1f1;
 }
+
 /* Botón de login */
 .login-button {
   width: 100%;
   padding: 12px;
   background-color: #b678dd;
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 10px 0;
+  transition: background-color 0.3s ease;
 }
+
 /* Cambio de color al pasar el mouse sobre el botón */
 .login-button:hover {
   background-color: #a865c9;
 }
+
 /* Texto de enlace de login */
 .signup-text {
   margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
 }
 
 /* Estilo del enlace dentro del texto de registro */
@@ -74,20 +81,21 @@ body {
   text-decoration: none;
   font-weight: bold;
 }
-/* Efecto de subrayado al pasar el mouse sobre el enlace */
 
+/* Efecto de subrayado al pasar el mouse sobre el enlace */
 .signup-text a:hover {
   text-decoration: underline;
 }
-/* Media  pantallas pequeñas */
+
+/* Media Queries para pantallas más grandes */
 @media (min-width: 768px) {
   .login-container {
-    max-width: 400px;
+    max-width: 380px;
     padding: 20px;
   }
 
   .title {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .input-field {
@@ -102,12 +110,12 @@ body {
 
 @media (min-width: 1024px) {
   .login-container {
-    max-width: 500px;
+    max-width: 420px;
     padding: 25px;
   }
 
   .title {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .input-field {
