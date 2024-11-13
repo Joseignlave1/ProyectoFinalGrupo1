@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
-import { getFeed, likePost } from "../../Services/postServices";
+import { getFeed, likePost, removeLike } from "../../Services/postServices";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import SideBar from "../../Components/SideBar/SideBar";
@@ -24,14 +24,20 @@ const Feed = () => {
 
   const handleLikePost = async (postId) => {
     try {
-      const updatedPost = await likePost(postId);
+      const post = posts.find((p) => p._id === postId);
+      let updatedPost;
+      if (post.likes.includes(id)) {
+        // Si el usuario ya dio like, lo elimina
+        updatedPost = await removeLike(postId);
+      } else {
+        // Si no ha dado like, lo agrega
+        updatedPost = await likePost(postId);
+      }
       setPosts((prevPosts) =>
-        prevPosts.map((post) =>
-          post.id === updatedPost.id ? updatedPost : post
-        )
+        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
-      console.error("Error al dar like:", error);
+      console.error("Error al dar o quitar like:", error);
     }
   };
 

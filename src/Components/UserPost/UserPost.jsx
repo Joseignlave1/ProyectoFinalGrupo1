@@ -3,6 +3,7 @@ import "./UserPost.css";
 import { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { likePost } from "../../Services/postServices";
+import { removeLike } from "../../Services/api.js";
 
 const UserPost = ({ post, userId, onClose, onLikeChange }) => {
   const [likes, setLikes] = useState(post.likes.length);
@@ -15,12 +16,17 @@ const UserPost = ({ post, userId, onClose, onLikeChange }) => {
 
   const handleLike = async () => {
     try {
-      const updatedPost = await likePost(post._id);
+      let updatedPost;
+      if (liked) {
+        updatedPost = await removeLike(post._id);
+      } else {
+        updatedPost = await likePost(post._id);
+      }
       setLikes(updatedPost.likes.length);
       setLiked(updatedPost.likes.includes(userId));
       onLikeChange(updatedPost);
     } catch (error) {
-      console.error("Error like:", error);
+      console.error("Error al dar o quitar like:", error);
     }
   };
 
@@ -34,8 +40,8 @@ const UserPost = ({ post, userId, onClose, onLikeChange }) => {
         />
 
         <div className="post-actions">
-        <button
-            className={`like-button ${liked ? 'liked' : ''}`}
+          <button
+            className={`like-button ${liked ? "liked" : ""}`}
             onClick={handleLike}
           >
             Like

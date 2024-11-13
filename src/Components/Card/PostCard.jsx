@@ -1,16 +1,29 @@
 import React from "react";
 import "./postCard.css";
 import { likePost } from "../../Services/postServices";
+import { removeLike } from "../../Services/api.js";
 
 const PostCard = ({ post, setPosts }) => {
+  const userId = localStorage.getItem("user-id"); // Identifica al usuario actual
+
+  // Handle para dar/quitar like a un post
   const handleLikePost = async () => {
     try {
-      const updatedPost = await likePost(post._id);
+      let updatedPost;
+      if (post.likes.includes(userId)) {
+        updatedPost = await removeLike(post._id);
+      } else {
+        updatedPost = await likePost(post._id);
+      }
+
+      // Conservar la información del usuario al actualizar el post
+      updatedPost.user = post.user;
+
       setPosts((prevPosts) =>
         prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
-      console.error("Error al dar like:", error);
+      console.error("Error al dar o quitar like:", error);
     }
   };
 
@@ -26,7 +39,11 @@ const PostCard = ({ post, setPosts }) => {
         <p className="post-card-username">{post.user.username}</p>
       </div>
 
-      <img src={`http://localhost:3001/${post.imageUrl}`} alt="Post content" className="post-img"  />
+      <img
+        src={`http://localhost:3001/${post.imageUrl}`}
+        alt="Post content"
+        className="post-img"
+      />
 
       <div className="post-card-details">
         <p className="post-card-likes">
