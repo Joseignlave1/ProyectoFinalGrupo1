@@ -22,7 +22,6 @@ const Profile = () => {
   const { id } = useParams();
 
   const isLoggedUserProfile = loggedInUserId === id;
-  //const defaultPhoto = "https://via.placeholder.com/150";
 
   useEffect(() => {
     if (id) {
