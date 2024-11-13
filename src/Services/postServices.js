@@ -4,9 +4,9 @@ export const getFeed = async () => {
   try {
     const response = await fetch("http://localhost:3001/api/posts/feed", {
       method: "GET",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (!response.ok) {
@@ -28,7 +28,7 @@ export const likePost = async (postId) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -37,14 +37,14 @@ export const likePost = async (postId) => {
       throw new Error(errorData.message || "Error al dar like al post");
     }
     const data = await response.json();
-    return data;  // Post actualizado
+    return data; // Post actualizado
   } catch (error) {
     console.error("Error en likePost:", error);
     throw error;
   }
 };
 
- export const saveUserProfile = async (username, profilePicture) => {
+export const saveUserProfile = async (username, profilePicture) => {
   const token = localStorage.getItem("token");
   try {
     const response = await fetch(
@@ -56,7 +56,8 @@ export const likePost = async (postId) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          username, profilePicture
+          username,
+          profilePicture,
         }),
       }
     );
@@ -86,5 +87,31 @@ export const followUser = async (userId) => {
     return data;
   } catch (error) {
     console.error("Error al seguir al usuario:", error);
+  }
+};
+
+export const removeLike = async (postId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/api/posts/${postId}/like`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error al remover el like del post");
+    }
+
+    const data = await response.json();
+    return data; // Devuelve el post actualizado sin el like
+  } catch (error) {
+    console.error("Error en removeLike:", error);
+    throw error;
   }
 };
