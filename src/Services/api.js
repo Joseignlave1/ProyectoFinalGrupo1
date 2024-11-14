@@ -120,3 +120,22 @@ export const removeLike = async (postId) => {
     throw error;
   }
 };
+
+export const getAllUsers = async () => {
+  try {
+    const response = await fetch("http://localhost:3001/api/user/all", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

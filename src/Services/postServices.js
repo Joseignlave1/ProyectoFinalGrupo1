@@ -45,7 +45,6 @@ export const likePost = async (postId) => {
 };
 
  export const saveUserProfile = async (username, description, profilePicture) => {
-  //const token = localStorage.getItem("token");
   try {
     const response = await fetch(
       `http://localhost:3001/api/user/profile/edit`,

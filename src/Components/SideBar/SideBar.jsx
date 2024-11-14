@@ -12,6 +12,7 @@ import "./SideBar.css";
 import feed from "../../Images/feed.png";
 import perfil from "../../Images/perfil.png";
 import LogoutIcon from "@mui/icons-material/ExitToApp";
+import search from "../../Images/search.png";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -22,8 +23,11 @@ const SideBar = () => {
       case "Feed":
         navigate("/feed");
         break;
-      case "Mi Perfil":
+      case "My Profil":
         navigate(`/user/profile/${userId}`);
+        break;
+      case "Search":
+        navigate("/search");
         break;
       case "Cerrar Sesión":
         localStorage.removeItem("jwt-token");
@@ -40,8 +44,12 @@ const SideBar = () => {
       icon: <img src={feed} alt="Feed" style={{ width: 24, height: 24 }} />,
     },
     {
-      text: "Mi Perfil",
+      text: "My Profil",
       icon: <img src={perfil} alt="Perfil" style={{ width: 24, height: 24 }} />,
+    },
+    {
+      text:"Search",
+      icon: <img src={search} alt="Search" style={{ width: 24, height: 24 }} />,
     },
     { text: "Cerrar Sesión", icon: <LogoutIcon /> },
   ];
