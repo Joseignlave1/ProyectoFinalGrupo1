@@ -6,6 +6,7 @@
   padding: 20px;
   font-family: "Arial", sans-serif;
   max-height: 90vh;
+  margin-left: 250px;
 }
 
 .profile-header {
@@ -55,6 +56,7 @@
   margin: 0;
   font-weight: normal;
   white-space: nowrap;
+  margin-right: 7px;
 }
 
 .profile-editBtn {
@@ -77,8 +79,8 @@
   gap: 10px;
   max-width: 800px;
   width: 100%;
-  min-height: 200px; /* Mantiene el espacio mínimo */
-  align-items: center; /* Centra el contenido en el eje vertical */
+  min-height: 200px;
+  align-items: center;
 }
 
 .no-posts-placeholder {
@@ -92,7 +94,6 @@
   align-items: center;
   height: 200px;
 }
-
 
 .profile-posts img {
   width: 100%;
@@ -168,27 +169,47 @@
   text-align: left;
 }
 
-.nombreUsuario{
+.nombreUsuario {
   margin-right: 26px;
 }
 
 @media (max-width: 768px) {
+  .profile-container {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .sidebar {
+    width: 100%;
+    position: relative;
+  }
   .profile-header {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
     text-align: center;
   }
-
+  .profile-pic {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
   .profile-info {
+    flex: 1;
     padding-left: 0;
-    text-align: center;
   }
   .profile-posts {
     grid-template-columns: repeat(2, 1fr);
   }
+  .nombreUsuario {
+    margin-right: 0;
+    margin-right: 20px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
+  .profile-container {
+    margin-left: 0;
+    padding: 8px;
+  }
   .profile-pic img {
     width: 100px;
     height: 100px;
@@ -199,12 +220,12 @@
   }
 
   .descripcion {
-    font-size: 5px;
+    font-size: 10px;
   }
 
   .profile-stats {
-    flex-direction: column;
     align-items: center;
+    white-space: nowrap;
   }
 
   .profile-stats div {
@@ -233,4 +254,9 @@
     font-size: 14px;
     padding: 8px;
   }
+
+  .profile-editBtn {
+    margin-top: 0;
+  }
+
 }
