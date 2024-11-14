@@ -5,7 +5,7 @@
   margin-top: 20px;
   padding: 20px;
   font-family: "Arial", sans-serif;
-  max-height: 90vh;
+  max-height: 100%;
   margin-left: 250px;
 }
 
@@ -167,6 +167,7 @@
   display: flex;
   margin-top: 20px;
   text-align: left;
+  align-items: center;
 }
 
 .nombreUsuario {
@@ -203,6 +204,9 @@
     margin-right: 20px;
     text-align: center;
   }
+  .descripcion{
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -220,7 +224,7 @@
   }
 
   .descripcion {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .profile-stats {

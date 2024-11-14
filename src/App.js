@@ -5,6 +5,8 @@ import Register from "./Views/Register/Register";
 import Feed from './Views/Feed/Feed';
 import Profile from './Views/Profile/Profile';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import Search from './Views/Search/Search';
+
 function App() {
   return (
     <div className="App">
@@ -22,6 +24,14 @@ function App() {
             }
           />
           <Route
+            path="search"
+            element={
+              <ProtectedRoute>
+                <Search />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="user/profile/:id"
             element={
               <ProtectedRoute>
@@ -29,6 +39,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+
 
 
         </Routes>
