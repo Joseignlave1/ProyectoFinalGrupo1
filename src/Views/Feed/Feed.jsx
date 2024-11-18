@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
 import { getFeed, likePost, removeLike } from "../../Services/postServices";
+import { createComment, removeComment } from "../../Services/api"; // Importar los métodos de comentarios
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import SideBar from "../../Components/SideBar/SideBar";
@@ -27,10 +28,8 @@ const Feed = () => {
       const post = posts.find((p) => p._id === postId);
       let updatedPost;
       if (post.likes.includes(id)) {
-        // Si el usuario ya dio like, lo elimina
         updatedPost = await removeLike(postId);
       } else {
-        // Si no ha dado like, lo agrega
         updatedPost = await likePost(postId);
       }
       setPosts((prevPosts) =>
@@ -65,7 +64,13 @@ const Feed = () => {
         <div className="feed"></div>
         <div className="posts">
           {posts.map((post) => (
-            <PostCard key={post._id} post={post} setPosts={setPosts} />
+            <PostCard
+              key={post._id}
+              post={post}
+              setPosts={setPosts}
+              createComment={createComment} // Pasar createComment como prop
+              removeComment={removeComment} // Pasar removeComment como prop
+            />
           ))}
         </div>
       </Container>

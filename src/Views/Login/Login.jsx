@@ -25,8 +25,9 @@ const Login = () => {
     try {
       const data = await postLogin(email, password);
       // Guardamos token JWT en localStorage
-      localStorage.setItem('jwt-token', data.token);
-      localStorage.setItem('user-id', data._id);
+      localStorage.setItem("jwt-token", data.token);
+      localStorage.setItem("user-id", data._id);
+      localStorage.setItem("username", data.username);
       navigate("/feed");
     } catch (error) {
       setErrorMessage("Credenciales Incorrectas, Intente nuevamente");
@@ -34,44 +35,44 @@ const Login = () => {
   };
 
   return (
-      <>
-        <CssBaseline />
-        <Container maxWidth="sm">
-          <div className="logo">
-            <img src={logo} className="App-logo" alt="logo" />
-          </div>
-          <h1 className="title">Fakestagram</h1>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <input
-                type="email"
-                placeholder="email"
-                className="input-field"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-            <input
-                type="password"
-                placeholder="password"
-                className="input-field"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
-            <button
-                type="submit"
-                className="login-button"
-                disabled={handleDisable}
-            >
-              Ingresar
-            </button>
-          </form>
-          <p className="signup-text">
-            Crear cuenta <a href="/register">Ingresa aquí</a>
-          </p>
-          {errorMessage && <p>{errorMessage}</p>}
-        </Container>
-      </>
+    <>
+      <CssBaseline />
+      <Container maxWidth="sm">
+        <div className="logo">
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+        <h1 className="title">Fakestagram</h1>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="email"
+            className="input-field"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="password"
+            className="input-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="login-button"
+            disabled={handleDisable}
+          >
+            Ingresar
+          </button>
+        </form>
+        <p className="signup-text">
+          Crear cuenta <a href="/register">Ingresa aquí</a>
+        </p>
+        {errorMessage && <p>{errorMessage}</p>}
+      </Container>
+    </>
   );
 };
 
