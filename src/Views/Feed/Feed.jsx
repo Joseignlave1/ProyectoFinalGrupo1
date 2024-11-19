@@ -57,24 +57,22 @@ const Feed = () => {
   };
 
   return (
-    <>
-      <CssBaseline />
+    <div style={{ display: "flex" }}>
       <SideBar />
-      <Container maxWidth="lg">
-        <div className="feed"></div>
-        <div className="posts">
-          {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-              setPosts={setPosts}
-              createComment={createComment} // Pasar createComment como prop
-              removeComment={removeComment} // Pasar removeComment como prop
-            />
-          ))}
+      <Container
+        maxWidth={false}
+        style={{ padding: "1rem", margin: "0 auto", flexGrow: 1 }}
+      >
+        <CssBaseline />
+        <div className="feed">
+          <div className="posts">
+            {posts.map((post) => (
+              <PostCard key={post._id} post={post} setPosts={setPosts} />
+            ))}
+          </div>
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

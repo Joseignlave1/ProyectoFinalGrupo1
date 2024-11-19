@@ -1,48 +1,27 @@
 .feed {
-  margin-top: 10rem;
+
   display: flex;
   flex-direction: column;
-}
-
-.feed-header {
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-  background-color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 60px;
-}
-.feed-content {
-  max-width: 600px;
   width: 100%;
-  margin-top: 20px;
 }
 
-.post-header,
-.post-actions,
-.post-details {
-  padding: 15px;
-}
-
-.cerrarSesion {
-  width: auto;
-  padding: 10px 20px;
-  margin: 15px auto;
-  border: none;
-  border-radius: 5px;
-  background-color: #e0e0e0;
-  color: #333;
-  cursor: pointer;
-  font-size: 16px;
+.posts {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.cerrarSesion:hover {
-  background-color: #ccc;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.post-card-container {
+  max-width: 70%; /* Ajusta este valor según lo que necesites */
+  width: 25%;
+  margin: 0 auto; /* Centra el contenedor */
 }
