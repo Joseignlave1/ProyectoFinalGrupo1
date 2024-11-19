@@ -41,7 +41,6 @@ const Feed = () => {
       }
       setPosts((prevPosts) =>
         prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
-        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
       console.error("Error al dar o quitar like:", error);
