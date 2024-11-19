@@ -23,7 +23,7 @@ const SideBar = () => {
       case "Feed":
         navigate("/feed");
         break;
-      case "My Profil":
+      case "My Profile":
         navigate(`/user/profile/${userId}`);
         break;
       case "Search":
@@ -44,7 +44,7 @@ const SideBar = () => {
       icon: <img src={feed} alt="Feed" style={{ width: 24, height: 24 }} />,
     },
     {
-      text: "My Profil",
+      text: "My Profile",
       icon: <img src={perfil} alt="Perfil" style={{ width: 24, height: 24 }} />,
     },
     {

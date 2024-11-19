@@ -12,6 +12,7 @@ import { followUser } from "../../Services/postServices";
 import SideBar from "../../Components/SideBar/SideBar";
 import defaultImage from "../../Images/defaultImage.jpg";
 import { unfollowUser } from "../../Services/postServices";
+import PostCard from "../../Components/Card/PostCard";
 
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState(null);
@@ -273,7 +274,7 @@ const Profile = () => {
               <div className="modal-content">
                 <UserPost
                   post={selectedPost}
-                  id={isLoggedUserProfile}
+                  setPosts={(updatedPosts) => setProfileInfo({ ...profileInfo, posts: updatedPosts })}
                   onClose={handleCloseModal}
                   onLikeChange={handleLikeChange}
                 />

@@ -14,9 +14,10 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 10px;
-  width: 70%;
+  margin-right: 80px;
+  width: 100%;
   border: 1px solid #000000;
+  
 }
 
 .search-container button {
