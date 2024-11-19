@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
 import { getFeed, likePost, removeLike } from "../../Services/postServices";
+import { createComment, removeComment } from "../../Services/api"; // Importar los métodos de comentarios
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import SideBar from "../../Components/SideBar/SideBar";
@@ -39,6 +40,7 @@ const Feed = () => {
         updatedPost = await likePost(postId);
       }
       setPosts((prevPosts) =>
+        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
         prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
@@ -99,3 +101,4 @@ const Feed = () => {
 };
 
 export default Feed;
+
