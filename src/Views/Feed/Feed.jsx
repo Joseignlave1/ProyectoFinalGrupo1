@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./feed.css";
 import PostCard from "../../Components/Card/PostCard";
 import { getFeed, likePost, removeLike } from "../../Services/postServices";
+import { createComment, removeComment } from "../../Services/api"; // Importar los métodos de comentarios
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import SideBar from "../../Components/SideBar/SideBar";
@@ -32,7 +33,7 @@ const Feed = () => {
         updatedPost = await likePost(postId);
       }
       setPosts((prevPosts) =>
-          prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
+        prevPosts.map((p) => (p._id === updatedPost._id ? updatedPost : p))
       );
     } catch (error) {
       console.error("Error al dar o quitar like:", error);
@@ -56,22 +57,22 @@ const Feed = () => {
   };
 
   return (
-      <div style={{ display: 'flex' }}>
-        <SideBar />
-        <Container
-            maxWidth={false}
-            style={{ padding: '1rem', margin: '0 auto', flexGrow: 1 }}
-        >
-          <CssBaseline />
-          <div className="feed">
-            <div className="posts">
-              {posts.map((post) => (
-                  <PostCard key={post._id} post={post} setPosts={setPosts} />
-              ))}
-            </div>
+    <div style={{ display: "flex" }}>
+      <SideBar />
+      <Container
+        maxWidth={false}
+        style={{ padding: "1rem", margin: "0 auto", flexGrow: 1 }}
+      >
+        <CssBaseline />
+        <div className="feed">
+          <div className="posts">
+            {posts.map((post) => (
+              <PostCard key={post._id} post={post} setPosts={setPosts} />
+            ))}
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
+    </div>
   );
 };
 
