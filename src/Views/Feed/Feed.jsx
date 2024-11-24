@@ -7,12 +7,15 @@ import { createComment, removeComment } from "../../Services/api"; // Importar l
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import SideBar from "../../Components/SideBar/SideBar";
+import { getAllUsers } from "../../Services/api";
+import ScrollCard from "../../Components/ScrollCard/ScrollCard";
 
 const Feed = () => {
   const navigate = useNavigate();
   const id = localStorage.getItem("user-id");
   const [posts, setPosts] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [user, setUsers] = useState([]);
 
   const handleLogout = () => {
     localStorage.removeItem("jwt-token");
@@ -22,6 +25,10 @@ const Feed = () => {
   const handleNavigateToFeed = () => {
     navigate("/feed");
   };
+
+  const handleClick = (userId) => {
+    navigate(`/user/profile/${userId}`);
+  }
 
   const handleLikePost = async (postId) => {
     try {
@@ -40,6 +47,16 @@ const Feed = () => {
     }
   };
 
+  const fetchAllUsers = async () => {
+    try {
+      const profiles = await getAllUsers();
+      setUsers(profiles);
+      console.log(profiles);
+    } catch (error) {
+      console.error("Error fetching all profiles:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -50,6 +67,7 @@ const Feed = () => {
       }
     };
     fetchPosts();
+    fetchAllUsers();
   }, []);
 
   const toggleDrawer = (open) => () => {
@@ -65,6 +83,11 @@ const Feed = () => {
       >
         <CssBaseline />
         <div className="feed">
+          <div className="scroll-container">
+            {user.map((user) => (
+              <ScrollCard key={user._id} user={user} onClick={() => handleClick(user._id)}/>
+            ))}
+          </div>
           <div className="posts">
             {posts.map((post) => (
               <PostCard key={post._id} post={post} setPosts={setPosts} />
@@ -77,3 +100,4 @@ const Feed = () => {
 };
 
 export default Feed;
+
