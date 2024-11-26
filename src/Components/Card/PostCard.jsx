@@ -55,7 +55,7 @@ const PostCard = ({ post, setPosts }) => {
           <strong>{post.likes.length} Me gusta</strong>
         </p>
         <button className="post-card-like-icon" onClick={handleLikePost}>
-          LIKE
+          {post.likes.includes(userId) ? "Dislike" : "Like"}
         </button>
         <p className="post-card-description">
           <strong>{post.user.username}</strong> {post.caption}
