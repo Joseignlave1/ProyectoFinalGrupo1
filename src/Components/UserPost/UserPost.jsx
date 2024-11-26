@@ -14,17 +14,24 @@ const UserPost = ({ post, userId, onClose, onLikeChange }) => {
     setLiked(post.likes.includes(userId));
   }, [post, userId]);
 
-  const handleLike = async () => {
+  const handleLikePost = async () => {
     try {
       let updatedPost;
-      if (liked) {
+      if (post.likes.includes(userId)) {
         updatedPost = await removeLike(post._id);
       } else {
         updatedPost = await likePost(post._id);
       }
-      setLikes(updatedPost.likes.length);
-      setLiked(updatedPost.likes.includes(userId));
-      onLikeChange(updatedPost);
+
+      // Mantener los comentarios intactos y solo actualizar los likes
+      updatedPost.comments = post.comments;
+
+      // Actualizar solo los likes en el estado, sin tocar los comentarios
+      // setPosts((prevPosts) =>
+      //   prevPosts.map((p) =>
+      //     p._id === updatedPost._id ? { ...p, likes: updatedPost.likes } : p
+      //   )
+      // );
     } catch (error) {
       console.error("Error al dar o quitar like:", error);
     }
@@ -42,7 +49,7 @@ const UserPost = ({ post, userId, onClose, onLikeChange }) => {
         <div className="post-actions">
           <button
             className={`like-button ${liked ? "liked" : ""}`}
-            onClick={handleLike}
+            onClick={handleLikePost}
           >
             Like
           </button>
