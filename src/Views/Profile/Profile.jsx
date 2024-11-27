@@ -13,7 +13,7 @@ import SideBar from "../../Components/SideBar/SideBar";
 import defaultImage from "../../Images/defaultImage.jpg";
 import { unfollowUser } from "../../Services/postServices";
 import PostCard from "../../Components/Card/PostCard";
-
+//
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState(null);
   const [modoEdicion, setModoEdicion] = useState(false);
@@ -246,6 +246,7 @@ const Profile = () => {
                   }
                   placeholder="Nombre de usuario"
                 />
+                
                 <input
                   type="text"
                   value={profileInfo.user.description}
