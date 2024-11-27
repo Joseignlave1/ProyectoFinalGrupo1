@@ -1,0 +1,76 @@
+.post-card {
+  border-bottom: 1px solid #ddd;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.post-username {
+  font-weight: bold;
+  margin-left: 10px;
+  flex: 1;
+  color: #ddd;
+}
+
+.post-img {
+  width: 100%;
+  max-height: 60vh;
+}
+
+.post-actions {
+  display: flex;
+  padding: 10px 15px;
+  font-size: 24px;
+}
+
+.post-actions i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.post-details {
+  padding: 0 15px 15px;
+}
+
+.likes {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: azure;
+}
+
+.post-description {
+  margin-bottom: 5px;
+  color:  azure;
+}
+
+.see-more {
+  color:  azure;;
+  cursor: pointer;
+}
+
+.view-comments {
+  color:  azure;;
+  margin-bottom: 5px;
+}
+
+.comments p {
+  margin: 0;
+}
+
+.time {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}

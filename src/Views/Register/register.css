@@ -1,0 +1,118 @@
+
+.wrapp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+}
+/* Imagen del logo */
+.logo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, #d5aefc, #a7e5d5);
+  margin-bottom: 15px;
+}
+
+/* Título principal */
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ba73ff, #94d8d3);
+-webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campos de entrada */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  font-size: 14px;
+}
+
+/* Botón de registro */
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #b678dd;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+/* Cambio de color al pasar el mouse sobre el botón */
+.register-button:hover {
+  background-color: #a865c9;
+}
+
+/* Texto de enlace de registro */
+.login-text {
+  margin-top: 15px;
+}
+
+/* Estilo del enlace dentro del texto de registro */
+.login-text a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #b678dd;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Media  pantallas pequeñas */
+@media (max-width: 480px) {
+
+
+  .title {
+    font-size: 20px; 
+  }
+
+  .input-field {
+    padding: 10px; 
+    font-size: 12px; 
+  }
+
+  .register-button {
+    padding: 10px; 
+    font-size: 12px; 
+  }
+}

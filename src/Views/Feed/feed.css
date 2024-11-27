@@ -1,0 +1,58 @@
+.feed {
+  display: flex;
+  flex-direction: column; /* Asegura que scroll-container siempre esté encima */
+  width: 100%;
+  gap: 1rem;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto; /* Scroll horizontal para los elementos */
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%; /* Ocupa todo el ancho */
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Fondo opcional para diferenciar */
+  z-index: 2; /* Asegura que esté por encima de otros elementos */
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.posts {
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+
+  .scroll-container {
+    width: calc(100% - 240px);
+    margin-left: 240px;
+    height: 300px;
+  }
+
+  .posts {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+  }
+}

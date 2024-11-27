@@ -1,0 +1,266 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  max-height: 100%;
+  margin-left: 250px;
+}
+
+.profile-header {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 30px 0;
+  align-items: flex-start;
+  min-height: 200px;
+}
+
+.profile-pic {
+  flex: 1;
+  text-align: center;
+  margin-left: 0;
+}
+
+.profile-pic img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #e6e6e6;
+}
+
+.profile-info {
+  flex: 1;
+  padding-left: 40px;
+  text-align: left;
+  min-width: 0;
+}
+
+.profile-stats {
+  display: flex;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.profile-stats div {
+  margin-right: 20px;
+  text-align: left;
+}
+
+.profile-stats h5 {
+  margin: 0;
+  font-weight: normal;
+  white-space: nowrap;
+  margin-right: 7px;
+}
+
+.profile-editBtn {
+  margin-top: 10px;
+}
+
+.profile-editBtn button {
+  color: black;
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.profile-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 800px;
+  width: 100%;
+  min-height: 200px;
+  align-items: center;
+}
+
+.no-posts-placeholder {
+  grid-column: span 3;
+  text-align: center;
+  color: #999;
+  font-size: 1rem;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.profile-posts img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
+
+.profile-posts p {
+  text-align: center;
+  color: #999;
+}
+
+.back-to-feed-btn {
+  color: black;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-edit-profile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  z-index: 1001;
+}
+
+.modal-edit-profile input[type="text"],
+.modal-edit-profile textarea,
+.modal-edit-profile input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.modal-edit-profile button {
+  color: black;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.profile-line {
+  display: flex;
+  margin-top: 20px;
+  text-align: left;
+  align-items: center;
+}
+
+.nombreUsuario {
+  margin-right: 26px;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .sidebar {
+    width: 100%;
+    position: relative;
+  }
+  .profile-header {
+    display: flex;
+    text-align: center;
+  }
+  .profile-pic {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .profile-info {
+    flex: 1;
+    padding-left: 0;
+  }
+  .profile-posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nombreUsuario {
+    margin-right: 0;
+    margin-right: 20px;
+    text-align: center;
+  }
+  .descripcion{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    margin-left: 0;
+    padding: 8px;
+  }
+  .profile-pic img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .nombreUsuario {
+    font-size: 20px;
+  }
+
+  .descripcion {
+    font-size: 13px;
+  }
+
+  .profile-stats {
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .profile-stats div {
+    margin: 10px 0;
+    margin-right: 0;
+  }
+
+  .profile-posts {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .profile-editBtn button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .modal-edit-profile {
+    max-width: 300px;
+    width: 90%;
+  }
+
+  .modal-edit-profile input[type="text"],
+  .modal-edit-profile textarea,
+  .modal-edit-profile input[type="file"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .profile-editBtn {
+    margin-top: 0;
+  }
+
+}

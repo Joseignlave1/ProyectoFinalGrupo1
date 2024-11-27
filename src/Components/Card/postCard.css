@@ -1,0 +1,114 @@
+.post-card-container {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 16px auto;
+  overflow: hidden;
+}
+
+.post-card-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.post-card-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.post-card-username {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.post-card-options-icon {
+  margin-left: auto;
+  color: #999;
+  cursor: pointer;
+}
+
+.post-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.post-card-like-icon,
+.post-card-comment-icon {
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+
+.post-card-details {
+  padding: 0 16px 16px;
+}
+
+.post-card-likes {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.post-card-like-icon {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #b678dd;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.post-card-like-icon:hover {
+  background-color: #a865c9;
+  color: #fff;
+}
+
+.post-card-description {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.post-card-see-more {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.post-card-view-comments {
+  color: #555;
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.post-card-comments {
+  margin: 8px 0;
+  color: #444;
+}
+
+.post-card-time {
+  font-size: 12px;
+  color: #aaa;
+  text-align: right;
+}
+
+.post-card-view-comments {
+  background-color: transparent;
+  border: none;
+  color: #b678dd;
+  cursor: pointer;
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.post-card-view-comments:hover {
+  color: #0056b3;
+}

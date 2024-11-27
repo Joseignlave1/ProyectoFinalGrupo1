@@ -1,0 +1,44 @@
+.card-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  padding: 25px;
+  border: 1px solid #fffdfd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 5px;
+}
+
+.card-scroll img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.card-scroll .card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-scroll h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.viewButton {
+  color: white;
+  background-color: #428bda;
+  border: none;
+  border-radius: 15%;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
